@@ -18,8 +18,7 @@ def get_random_numpy():
 
 st.title("ESP32 Camera over WIFI and MQTTS");
 
-VIEWER_WIDTH = 600
-viewer = st.image(get_random_numpy(), width=VIEWER_WIDTH)
+viewer = st.image(get_random_numpy(), width=480)
 message = st.empty()
 
 def on_connect(client, userdata, flags, rc):
@@ -39,7 +38,7 @@ def on_message(client, userdata, msg):
     global image_count
     image_count=image_count+1
     message.text("Image Received: "+str(image_count))
-    viewer.image(msg.payload, width=VIEWER_WIDTH)
+    viewer.image(msg.payload)
     
 print("running main");
 
